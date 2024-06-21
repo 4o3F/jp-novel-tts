@@ -1,0 +1,33 @@
+[package]
+name = "ratatui-explorer"
+version = "0.1.1"
+edition = "2021"
+authors = ["Tatounee"]
+description = "ratatui-explorer is a small, but highly customizable, file explorer widget for ratatui."
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/tatounee/ratatui-explorer"
+repository = "https://github.com/tatounee/ratatui-explorer.git"
+keywords = ["tui", "ratatui", "terminal", "file", "explorer"]
+categories = ["command-line-interface", "filesystem"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+crossterm = { version = "0.27", optional = true }
+termion = { version = "3.0", optional = true }
+termwiz = { version = "0.22", optional = true }
+
+ratatui = { version = "0.26", default-features = false, features = [
+    "unstable-widget-ref",
+] }
+derivative = "2.2"
+
+[features]
+default = ["crossterm"]
+crossterm = ["dep:crossterm"]
+termion = ["dep:termion"]
+termwiz = ["dep:termwiz"]
+
+[package.metadata.docs.rs]
+cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
